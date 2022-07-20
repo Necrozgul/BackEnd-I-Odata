@@ -15,7 +15,8 @@ namespace Models
         public string State { get; set; }
         public int Price { get; set; }
 
-
+        [NotMapped]
+        [JsonIgnore]
         public virtual Contract Contract { get; set; }
         //public int ContractId { get; set; }
     }
