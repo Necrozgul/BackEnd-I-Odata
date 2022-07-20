@@ -18,6 +18,5 @@ namespace Models
         [NotMapped]
         [JsonIgnore]
         public virtual Contract Contract { get; set; }
-        //public int ContractId { get; set; }
     }
 }
