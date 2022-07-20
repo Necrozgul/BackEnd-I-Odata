@@ -18,7 +18,6 @@ namespace Models
         [Required]
         public string Type { get; set; }
         public DateTime Timing { get; set; }
-
         public string Executor { get; set; }
     }
 }
