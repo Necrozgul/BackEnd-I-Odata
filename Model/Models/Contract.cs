@@ -23,7 +23,7 @@ namespace Models
 
         [NotMapped]
         [JsonIgnore]
-        public virtual IList<Contract_Device_Relation> Contract_Device_Relations { get; set; }
+        public virtual IList<Contract_Device> Contract_Device_Relations { get; set; }
 
     }
 }

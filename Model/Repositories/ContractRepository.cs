@@ -32,9 +32,22 @@ namespace Model
 
         public void Put(Contract obj)
         {
-            var old = Get(obj.Id);
-            old = obj;
-            db.SaveChanges();
+            if (obj != null)
+            {
+                var old = Get(obj.Id);
+                old.Name = obj.Name;
+                old.Startdate = obj.Startdate;
+                old.Enddate = obj.Enddate;
+                old.Email = obj.Email;
+                old.Phone = obj.Phone;
+                old.Address = obj.Address;
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("[Error] : You didnt gave the contract so cant edit");
+            }
+            
         }
 
         public void Delete(int id)

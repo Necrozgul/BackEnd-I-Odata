@@ -5,32 +5,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Repositories
+namespace Models
 {
-    public class Rental_ContractRepository
+    public class ContractDeviceRepository : IContractDeviceRepository
     {
         RentalDBContext db;
-        public Rental_ContractRepository(RentalDBContext _db)
+        public ContractDeviceRepository(RentalDBContext _db)
         {
             this.db = _db;
         }
-        public IList<Contract_Device_Relation> GetAll()
+        public IList<Contract_Device> GetAll()
         {
             return db.Contract_Device_Relations.ToArray();
         }
-        public Contract_Device_Relation Get(int id)
+        public Contract_Device Get(int id)
         {
             return db.Contract_Device_Relations.FirstOrDefault(t => t.Id == id);
         }
 
 
-        public void Post(Contract_Device_Relation obj)
+        public void Post(Contract_Device obj)
         {
             db.Contract_Device_Relations.Add(obj);
             db.SaveChanges();
         }
 
-        public void Put(Contract_Device_Relation obj)
+        public void Put(Contract_Device obj)
         {
             var old = Get(obj.Id);
             old = obj;

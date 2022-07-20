@@ -1,19 +1,18 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
-using Model;
 using Models;
 
 namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class DeviceController : ControllerBase
+    public class ContractDeviceController : ControllerBase
     {
 
-        private readonly ILogger<DeviceController> _logger;
-        IDeviceRepository context;
+        private readonly ILogger<Contract_Device> _logger;
+        IContractDeviceRepository context;
 
-        public DeviceController(ILogger<DeviceController> logger, IDeviceRepository repo)
+        public ContractDeviceController(ILogger<Contract_Device> logger, IContractDeviceRepository repo)
         {
             _logger = logger;
             context = repo;
@@ -21,17 +20,16 @@ namespace API.Controllers
 
         [HttpGet]
         //[EnableQuery]
-        public IList<Device> Get()
+        public IList<Contract_Device> Get()
         {
             var d = context.GetAll();
-            ;
             return d;
         }
 
 
         [HttpPost]
         [Produces("application/json")]
-        public IActionResult Post([FromBody] Device dev)
+        public IActionResult Post([FromBody] Contract_Device dev)
         {
             try
             {
@@ -42,12 +40,12 @@ namespace API.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
+
         }
 
         [HttpPut]
         [EnableQuery]
-        public IActionResult Put([FromBody] Device dev)
+        public IActionResult Put([FromBody] Contract_Device dev)
         {
             try
             {

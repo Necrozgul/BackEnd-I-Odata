@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Contract_Device_Relation
+    public class Contract_Device
     {
             [Key]
             [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

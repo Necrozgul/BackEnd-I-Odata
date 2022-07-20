@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -16,8 +17,10 @@ namespace Models
         public string State { get; set; }
         public int Price { get; set; }
 
+        public DateTime Date { get; set; }
+
         [NotMapped]
         [JsonIgnore]
-        public virtual IList<Contract_Device_Relation> Contract_Device_Relations { get; set; }
+        public virtual IList<Contract_Device> Contract_Device_Relations { get; set; }
     }
 }

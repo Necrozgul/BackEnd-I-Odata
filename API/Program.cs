@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddTransient<RentalDBContext>();
 builder.Services.AddTransient<IContractRepository, ContractRepository>();
 builder.Services.AddTransient<IDeviceRepository, DeviceRepository>();
+builder.Services.AddTransient<IContractDeviceRepository, ContractDeviceRepository>();
 builder.Services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
