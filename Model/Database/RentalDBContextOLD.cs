@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class RentalDBContext : DbContext
+    public class RentalDBContextOLD : DbContext
     {
         public virtual DbSet<Device> Devices { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
         public virtual DbSet<Contract_Device> Contract_Device_Relations { get; set; }
         public virtual DbSet<History> History { get; set; }
 
-        public RentalDBContext()
+        public RentalDBContextOLD()
         {
             this.Database.EnsureCreated();
         }

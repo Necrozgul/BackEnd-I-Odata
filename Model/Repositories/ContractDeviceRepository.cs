@@ -9,8 +9,8 @@ namespace Models
 {
     public class ContractDeviceRepository : IContractDeviceRepository
     {
-        RentalDBContext db;
-        public ContractDeviceRepository(RentalDBContext _db)
+        RentalDBContextOLD db;
+        public ContractDeviceRepository(RentalDBContextOLD _db)
         {
             this.db = _db;
         }

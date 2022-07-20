@@ -9,8 +9,8 @@ namespace Model
 {
     public class HistoryRepository : IHistoryRepository
     {
-        RentalDBContext db;
-        public HistoryRepository(RentalDBContext _db)
+        RentalDBContextOLD db;
+        public HistoryRepository(RentalDBContextOLD _db)
         {
             this.db = _db;
         }

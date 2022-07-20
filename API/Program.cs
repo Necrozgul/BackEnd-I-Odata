@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.OData;
 using Model;
 using Models;
+using NHibernate.Cfg;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,10 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddTransient<RentalDBContext>();
+//builder.Services.AddTransient<RentalDBContextOLD>();
 builder.Services.AddTransient<IContractRepository, ContractRepository>();
 builder.Services.AddTransient<IDeviceRepository, DeviceRepository>();
 builder.Services.AddTransient<IContractDeviceRepository, ContractDeviceRepository>();
+
 builder.Services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
