@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -17,9 +18,6 @@ namespace Models
 
         [NotMapped]
         [JsonIgnore]
-        public virtual Contract Contract { get; set; }
-
-        //[ForeignKey(nameof(Contract))]
-        //public int? ContractId { get; set; }
+        public virtual IList<Contract_Device_Relation> Contract_Device_Relations { get; set; }
     }
 }

@@ -9,9 +9,11 @@ namespace Models
 {
     public class RentalDBContext : DbContext
     {
-        public DbSet<Device> Devices { get; set; }
-        public DbSet<Contract> Contracts { get; set; }
-        public DbSet<History> History { get; set; }
+        public virtual DbSet<Device> Devices { get; set; }
+        public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<Contract_Device_Relation> Contract_Device_Relations { get; set; }
+        public virtual DbSet<History> History { get; set; }
+
         public RentalDBContext()
         {
             this.Database.EnsureCreated();
@@ -29,18 +31,10 @@ namespace Models
         protected override void OnModelCreating(ModelBuilder mb)
         {
 
-            mb.Entity<Device>(entity =>
-            {
-                entity.HasOne(device => device.Contract)
-                    .WithMany(contract => contract.Devices)
-                    //.HasForeignKey(device => device.ContractId)
-                    .OnDelete(DeleteBehavior.Restrict);
+            mb.Entity<Contract_Device_Relation>().HasKey(pt => new { pt.DeviceId, pt.ContractId });
+            mb.Entity<Contract_Device_Relation>().HasOne(y => y.Device).WithMany(y => y.Contract_Device_Relations).HasForeignKey(y => y.DeviceId).OnDelete(DeleteBehavior.Restrict);
+            mb.Entity<Contract_Device_Relation>().HasOne(x => x.Contract).WithMany(x => x.Contract_Device_Relations).HasForeignKey(x => x.ContractId).OnDelete(DeleteBehavior.Restrict);
 
-                //entity.HasOne(device => device.Contract)
-                //    .WithMany(contract => contract.Devices)
-                //    .HasForeignKey(device => device.DeviceContractId)
-                //    .OnDelete(DeleteBehavior.Restrict);
-            });
             Contract c1 = new Contract() { 
                 Id=1, Name="Contract1", 
                 Startdate=DateTime.Now, 

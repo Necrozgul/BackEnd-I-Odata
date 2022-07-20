@@ -21,7 +21,9 @@ namespace Models
         public string Phone { get; set; }
         public string Address { get; set; }
 
-        public virtual IList<Device> Devices { get; set; }
+        [NotMapped]
+        [JsonIgnore]
+        public virtual IList<Contract_Device_Relation> Contract_Device_Relations { get; set; }
 
     }
 }
