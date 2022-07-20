@@ -12,14 +12,17 @@ namespace Models
 {
     public class Contract_Device
     {
-            [Key]
-            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-            public int Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-            public virtual Contract Contract { get; set; }
-            public int ContractId { get; set; }
-
-            public virtual Device Device { get; set; }
-            public int DeviceId { get; set; }
+        [NotMapped]
+        [JsonIgnore]
+        public virtual Contract Contract { get; set; }
+        public int ContractId { get; set; }
+        [NotMapped]
+        [JsonIgnore]
+        public virtual Device Device { get; set; }
+        public int DeviceId { get; set; }
     }
 }

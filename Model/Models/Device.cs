@@ -19,8 +19,6 @@ namespace Models
 
         public DateTime Date { get; set; }
 
-        [NotMapped]
-        [JsonIgnore]
         public virtual IList<Contract_Device> Contract_Device_Relations { get; set; }
     }
 }

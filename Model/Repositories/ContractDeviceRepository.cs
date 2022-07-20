@@ -33,7 +33,8 @@ namespace Models
         public void Put(Contract_Device obj)
         {
             var old = Get(obj.Id);
-            old = obj;
+            old.ContractId = obj.ContractId;
+            old.DeviceId = obj.DeviceId;
             db.SaveChanges();
         }
 
