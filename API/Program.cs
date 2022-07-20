@@ -1,6 +1,5 @@
+using API;
 using Microsoft.AspNetCore.OData;
-using Model;
-using Models;
 using NHibernate.Cfg;
 
 var builder = WebApplication.CreateBuilder(args);

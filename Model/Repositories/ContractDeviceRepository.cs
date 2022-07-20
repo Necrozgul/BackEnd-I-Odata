@@ -1,4 +1,6 @@
-﻿using Models;
+﻿using Model;
+using Models;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,39 +11,52 @@ namespace Models
 {
     public class ContractDeviceRepository : IContractDeviceRepository
     {
-        RentalDBContextOLD db;
-        public ContractDeviceRepository(RentalDBContextOLD _db)
-        {
-            this.db = _db;
-        }
         public IList<Contract_Device> GetAll()
         {
-            return db.Contract_Device_Relations.ToArray();
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var devices = session
+                    .CreateCriteria(typeof(Contract_Device))
+                    .List<Contract_Device>();
+                return devices;
+            }
         }
         public Contract_Device Get(int id)
         {
-            return db.Contract_Device_Relations.FirstOrDefault(t => t.Id == id);
+            using (ISession session = NHibernateHelper.OpenSession())
+                return session.Get<Contract_Device>(id);
         }
 
 
         public void Post(Contract_Device obj)
         {
-            db.Contract_Device_Relations.Add(obj);
-            db.SaveChanges();
+            using (ISession session = NHibernateHelper.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                session.Save(obj);
+                transaction.Commit();
+            }
         }
 
         public void Put(Contract_Device obj)
         {
-            var old = Get(obj.Id);
-            old.ContractId = obj.ContractId;
-            old.DeviceId = obj.DeviceId;
-            db.SaveChanges();
+            using (ISession session = NHibernateHelper.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                session.Update(obj);
+                transaction.Commit();
+            }
         }
 
         public void Delete(int id)
         {
-            db.Remove(Get(id));
-            db.SaveChanges();
+            var obj = Get(id);
+            using (ISession session = NHibernateHelper.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                session.Delete(obj);
+                transaction.Commit();
+            }
         }
     }
 }

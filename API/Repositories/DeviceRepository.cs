@@ -1,18 +1,17 @@
-﻿using Models;
-using NHibernate;
+﻿using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace API
 {
     public class DeviceRepository : IDeviceRepository
     {
         public IList<Device> GetAll()
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (NHibernate.ISession session = NHibernateHelper.OpenSession())
             {
                 var devices = session
                     .CreateCriteria(typeof(Device))
@@ -22,14 +21,14 @@ namespace Model
         }
         public Device Get(int id)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (NHibernate.ISession session = NHibernateHelper.OpenSession())
                 return session.Get<Device>(id);
         }
 
 
         public void Post(Device obj)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (NHibernate.ISession session = NHibernateHelper.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Save(obj);
@@ -39,7 +38,7 @@ namespace Model
 
         public void Put(Device obj)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (NHibernate.ISession session = NHibernateHelper.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Update(obj);
@@ -50,7 +49,7 @@ namespace Model
         public void Delete(int id)
         {
             var obj = Get(id);
-            using (ISession session = NHibernateHelper.OpenSession())
+            using (NHibernate.ISession session = NHibernateHelper.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Delete(obj);
