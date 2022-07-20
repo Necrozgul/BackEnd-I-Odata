@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Contractrepository : IContractrepository
+    public class ContractRepository : IContractRepository
     {
         RentalDBContext db;
-        public Contractrepository(RentalDBContext _db)
+        public ContractRepository(RentalDBContext _db)
         {
             this.db = _db;
         }

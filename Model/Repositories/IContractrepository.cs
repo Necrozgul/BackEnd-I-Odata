@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Model
 {
-    public interface IContractrepository
+    public interface IContractRepository
     {
         void Delete(int id);
         Contract Get(int id);

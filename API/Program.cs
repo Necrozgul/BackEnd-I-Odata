@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddTransient<RentalDBContext>();
+builder.Services.AddTransient<IContractRepository, ContractRepository>();
 builder.Services.AddTransient<IDeviceRepository, DeviceRepository>();
 builder.Services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()));
 builder.Services.AddEndpointsApiExplorer();
