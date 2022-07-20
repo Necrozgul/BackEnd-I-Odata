@@ -21,7 +21,7 @@ namespace Models
         {
             if (!builder.IsConfigured)
             {
-                string conn =@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
+                string conn =@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\Database.mdf;Integrated Security=True";
                 builder.UseLazyLoadingProxies().UseSqlServer(conn);
             }
         }
