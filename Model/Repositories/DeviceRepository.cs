@@ -33,7 +33,7 @@ namespace Model
         public void Put(Device obj)
         {
             var old = Get(obj.Id);
-            old.Name = obj.Name;
+            old = obj;
             db.SaveChanges();
         }
 
