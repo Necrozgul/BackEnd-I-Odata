@@ -20,7 +20,7 @@ namespace Model
         }
         public Contract Get(int id)
         {
-            return db.Contracts.FirstOrDefault(t => t.ContractKey == id);
+            return db.Contracts.FirstOrDefault(t => t.Id == id);
         }
 
 
@@ -32,7 +32,7 @@ namespace Model
 
         public void Put(Contract obj)
         {
-            var old = Get(obj.ContractKey);
+            var old = Get(obj.Id);
             old.Name = obj.Name;
             db.SaveChanges();
         }

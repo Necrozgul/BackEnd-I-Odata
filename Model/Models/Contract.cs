@@ -13,12 +13,12 @@ namespace Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ContractKey { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Startdate { get; set; }
         public DateTime Enddate { get; set; }
         public string Email { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         public string Address { get; set; }
 
         public virtual IList<Device> Devices { get; set; }

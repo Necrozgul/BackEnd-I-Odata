@@ -41,10 +41,27 @@ namespace Models
                 //    .HasForeignKey(device => device.DeviceContractId)
                 //    .OnDelete(DeleteBehavior.Restrict);
             });
-            Contract c1 = new Contract() { ContractKey=1};
-            Contract c2 = new Contract() { ContractKey = 2 };
-            Device n1 = new Device() { DeviceKey = 1, Name = "Device Test1", Price=50, State="Available"};
-            Device n2 = new Device() { DeviceKey = 2, Name = "Device Test2", Price = 100, State = "Rented"};
+            Contract c1 = new Contract() { 
+                Id=1, Name="Contract1", 
+                Startdate=DateTime.Now, 
+                Enddate= new DateTime(2022, 12, 31, 23, 59, 59),
+                Email="contract1@c1.com",
+                Phone="15234356345",
+                Address="test street 1"
+            };
+            Contract c2 = new Contract()
+            {
+                Id = 2,
+                Name = "Contract2",
+                Startdate = DateTime.Now,
+                Enddate = new DateTime(2022, 12, 31, 23, 59, 59),
+                Email = "contract2@c2.com",
+                Phone = "152343563222",
+                Address = "test street 2"
+            };
+            Device n1 = new Device() { Id = 1, Name = "Device Test1", Price=50, State="Available"};
+            Device n2 = new Device() { Id = 2, Name = "Device Test2", Price = 100, State = "Rented"};
+            mb.Entity<Contract>().HasData(c1, c2);
             mb.Entity<Device>().HasData(n1, n2);
             
         }

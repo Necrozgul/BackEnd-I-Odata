@@ -20,7 +20,7 @@ namespace Model
         }
         public Device Get(int id)
         {
-            return db.Devices.FirstOrDefault(t => t.DeviceKey == id);
+            return db.Devices.FirstOrDefault(t => t.Id == id);
         }
 
 
@@ -32,7 +32,7 @@ namespace Model
 
         public void Put(Device obj)
         {
-            var old = Get(obj.DeviceKey);
+            var old = Get(obj.Id);
             old.Name = obj.Name;
             db.SaveChanges();
         }

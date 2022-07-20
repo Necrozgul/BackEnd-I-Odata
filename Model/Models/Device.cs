@@ -8,7 +8,7 @@ namespace Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DeviceKey { get; set; }
+        public int Id { get; set; }
         [MaxLength(20)]
         [Required]
         public string Name { get; set; }
@@ -18,5 +18,8 @@ namespace Models
         [NotMapped]
         [JsonIgnore]
         public virtual Contract Contract { get; set; }
+
+        //[ForeignKey(nameof(Contract))]
+        //public int? ContractId { get; set; }
     }
 }
