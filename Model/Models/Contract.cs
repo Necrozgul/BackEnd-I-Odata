@@ -37,6 +37,8 @@ namespace Models
             Property(x => x.Email, map => map.Length(150));
             Property(x => x.Phone, map => map.Length(150));
             Property(x => x.Address, map => map.Length(150));
+
+            Table("Contracts");
         }
     }
 }
