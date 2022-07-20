@@ -1,16 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
-                   assembly="WebApplication1"
-                   namespace="API">
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+	<session-factory>
+		<property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+		<property name="dialect">NHibernate.Dialect.MsSqlCeDialect</property>
+		<property name="connection.driver_class">NHibernate.Driver.SqlServerCeDriver</property>
+		<property name="connection.connection_string">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\StarshipDB.mdf</property>
 
-	<class name="Device">
-		<id name="ID" column="ID">
-			<generator class="identity"/>
-		</id>
-		<property name="Name" />
-		<property name="Date" />
-		<property name="Price" />
-		<property name="State" />
-	</class>
-
-</hibernate-mapping>
+		<property name="show_sql">true</property>
+	</session-factory>
+</hibernate-configuration>
