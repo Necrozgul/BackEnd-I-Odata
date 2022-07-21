@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Models
 {
     public class RentalDBContext : DbContext
+
     {
         public virtual DbSet<Device> Devices { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
