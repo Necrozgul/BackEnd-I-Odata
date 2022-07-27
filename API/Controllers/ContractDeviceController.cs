@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Query;
+using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Models;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class ContractDeviceController : ControllerBase
+
+    public class ContractDeviceController : ODataController
     {
 
         private readonly ILogger<ContractDevice> _logger;
@@ -18,8 +19,8 @@ namespace API.Controllers
             context = repo;
         }
 
-        [HttpGet]
-        //[EnableQuery]
+        
+
         public IList<ContractDevice> Get()
         {
             var d = context.GetAll();
@@ -27,9 +28,7 @@ namespace API.Controllers
         }
 
 
-        [HttpPost]
-        [Produces("application/json")]
-        public IActionResult Post([FromBody] ContractDevice dev)
+        public IActionResult Post(ContractDevice dev)
         {
             try
             {
@@ -43,9 +42,7 @@ namespace API.Controllers
 
         }
 
-        [HttpPut]
-        [EnableQuery]
-        public IActionResult Put([FromBody] ContractDevice dev)
+        public IActionResult Patch([FromODataUri] ContractDevice dev)
         {
             try
             {
@@ -59,13 +56,12 @@ namespace API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        [EnableQuery]
-        public IActionResult Delete(int id)
+
+        public IActionResult Delete([FromODataUri] int key)
         {
             try
             {
-                context.Delete(id);
+                context.Delete(key);
                 return Ok("Siker");
             }
             catch (Exception ex)

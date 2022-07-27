@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Model;
@@ -26,7 +27,7 @@ namespace API.Controllers
             return d;
         }
 
-        public IActionResult Post([FromBody] Contract dev)
+        public IActionResult Post(Contract dev)
         {
             try
             {
@@ -40,7 +41,7 @@ namespace API.Controllers
             
         }
 
-        public IActionResult Put([FromBody] Contract dev)
+        public IActionResult Put([FromODataBody] Contract dev)
         {
             try
             {
@@ -53,12 +54,12 @@ namespace API.Controllers
                 return Ok(ex.Message);
             }
         }
-
-        public IActionResult Delete(int id)
+        //Delete Method
+        public IActionResult Delete( int key)
         {
             try
             {
-                context.Delete(id);
+                context.Delete(key);
                 return Ok("Siker");
             }
             catch (Exception ex)

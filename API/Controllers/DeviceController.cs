@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Model;
@@ -27,7 +28,7 @@ namespace API.Controllers
         }
 
 
-        public IActionResult Post([FromBody] Device dev)
+        public IActionResult Post(Device dev)
         {
             try
             {
@@ -41,7 +42,7 @@ namespace API.Controllers
             
         }
 
-        public IActionResult Put([FromBody] Device dev)
+        public IActionResult Put([FromODataUri] Device dev)
         {
             try
             {
@@ -55,11 +56,11 @@ namespace API.Controllers
             }
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromODataUri] int key)
         {
             try
             {
-                context.Delete(id);
+                context.Delete(key);
                 return Ok("Siker");
             }
             catch (Exception ex)
