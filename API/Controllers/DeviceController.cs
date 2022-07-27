@@ -20,6 +20,7 @@ namespace API.Controllers
             context = repo;
         }
 
+        [EnableQuery]
         public IList<Device> Get()
         {
             var d = context.GetAll();

@@ -19,7 +19,7 @@ namespace API.Controllers
             context = repo;
         }
 
-
+        [EnableQuery]
         public IList<History> Get()
         {
             var d = context.GetAll();

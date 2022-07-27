@@ -65,9 +65,12 @@ namespace Models
             Device n1 = new Device() { Id = 1, Name = "Device Test1", Price=50, State="Available"};
             Device n2 = new Device() { Id = 2, Name = "Device Test2", Price = 100, State = "Rented"};
             History h1 = new History() { Id=1, Executor=1, Date= new DateTime(2022, 12, 31, 23, 59, 59) , Type="Create"};
+            ContractDevice cd1 = new() { Id = 1, ContractId = 1, DeviceId = 1 };
+            ContractDevice cd2 = new() { Id = 2, ContractId = 2, DeviceId = 2 };
             mb.Entity<Contract>().HasData(c1, c2);
             mb.Entity<Device>().HasData(n1, n2);
             mb.Entity<History>().HasData(h1);
+            mb.Entity<ContractDevice>().HasData(cd1,cd2);
             
         }
     }

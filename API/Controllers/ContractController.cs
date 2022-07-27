@@ -19,7 +19,7 @@ namespace API.Controllers
             _logger = logger;
             context = repo;
         }
-
+        [EnableQuery]
         public IList<Contract> Get()
         {
             var d = context.GetAll();

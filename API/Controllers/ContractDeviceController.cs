@@ -19,8 +19,8 @@ namespace API.Controllers
             context = repo;
         }
 
-        
 
+        [EnableQuery]
         public IList<ContractDevice> Get()
         {
             var d = context.GetAll();
@@ -28,7 +28,7 @@ namespace API.Controllers
         }
 
 
-        public IActionResult Post(ContractDevice dev)
+        public IActionResult Post([FromBody] ContractDevice dev)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace API.Controllers
 
         }
 
-        public IActionResult Patch(ContractDevice dev)
+        public IActionResult Patch([FromBody] ContractDevice dev)
         {
             try
             {
