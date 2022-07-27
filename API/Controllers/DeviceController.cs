@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
+using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Model;
 using Models;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class DeviceController : ControllerBase
+
+    public class DeviceController : ODataController
     {
 
         private readonly ILogger<DeviceController> _logger;
@@ -19,8 +19,6 @@ namespace API.Controllers
             context = repo;
         }
 
-        [HttpGet]
-        //[EnableQuery]
         public IList<Device> Get()
         {
             var d = context.GetAll();
@@ -29,8 +27,6 @@ namespace API.Controllers
         }
 
 
-        [HttpPost]
-        [Produces("application/json")]
         public IActionResult Post([FromBody] Device dev)
         {
             try
@@ -45,8 +41,6 @@ namespace API.Controllers
             
         }
 
-        [HttpPut]
-        [EnableQuery]
         public IActionResult Put([FromBody] Device dev)
         {
             try
@@ -61,8 +55,6 @@ namespace API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        [EnableQuery]
         public IActionResult Delete(int id)
         {
             try

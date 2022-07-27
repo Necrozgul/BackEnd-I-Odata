@@ -24,7 +24,6 @@ namespace API.Controllers
         public IList<History> Get()
         {
             var d = context.GetAll();
-            ;
             return d;
         }
 

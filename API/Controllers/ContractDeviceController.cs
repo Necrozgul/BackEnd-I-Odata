@@ -9,10 +9,10 @@ namespace API.Controllers
     public class ContractDeviceController : ControllerBase
     {
 
-        private readonly ILogger<Contract_Device> _logger;
+        private readonly ILogger<ContractDevice> _logger;
         IContractDeviceRepository context;
 
-        public ContractDeviceController(ILogger<Contract_Device> logger, IContractDeviceRepository repo)
+        public ContractDeviceController(ILogger<ContractDevice> logger, IContractDeviceRepository repo)
         {
             _logger = logger;
             context = repo;
@@ -20,7 +20,7 @@ namespace API.Controllers
 
         [HttpGet]
         //[EnableQuery]
-        public IList<Contract_Device> Get()
+        public IList<ContractDevice> Get()
         {
             var d = context.GetAll();
             return d;
@@ -29,7 +29,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Produces("application/json")]
-        public IActionResult Post([FromBody] Contract_Device dev)
+        public IActionResult Post([FromBody] ContractDevice dev)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace API.Controllers
 
         [HttpPut]
         [EnableQuery]
-        public IActionResult Put([FromBody] Contract_Device dev)
+        public IActionResult Put([FromBody] ContractDevice dev)
         {
             try
             {

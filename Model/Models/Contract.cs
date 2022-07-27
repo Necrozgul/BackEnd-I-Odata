@@ -23,7 +23,7 @@ namespace Models
         public string Phone { get; set; }
         public string Address { get; set; }
 
-        public virtual IList<Contract_Device> Contract_Device_Relations { get; set; }
+        public virtual IList<ContractDevice> Contract_Device_Relations { get; set; }
 
     }
     public class ContractMap : ClassMapping<Contract>

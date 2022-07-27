@@ -12,7 +12,7 @@ namespace Models
     {
         public virtual DbSet<Device> Devices { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
-        public virtual DbSet<Contract_Device> Contract_Device_Relations { get; set; }
+        public virtual DbSet<ContractDevice> Contract_Device_Relations { get; set; }
         public virtual DbSet<History> History { get; set; }
 
         public RentalDBContext()
@@ -32,9 +32,9 @@ namespace Models
         protected override void OnModelCreating(ModelBuilder mb)
         {
             //Connection between Device and Contracts with a connection table
-            mb.Entity<Contract_Device>().HasKey(pt => new { pt.DeviceId, pt.ContractId });
-            mb.Entity<Contract_Device>().HasOne(y => y.Device).WithMany(y => y.Contract_Device_Relations).HasForeignKey(y => y.DeviceId).OnDelete(DeleteBehavior.Restrict);
-            mb.Entity<Contract_Device>().HasOne(x => x.Contract).WithMany(x => x.Contract_Device_Relations).HasForeignKey(x => x.ContractId).OnDelete(DeleteBehavior.Restrict);
+            mb.Entity<ContractDevice>().HasKey(pt => new { pt.DeviceId, pt.ContractId });
+            mb.Entity<ContractDevice>().HasOne(y => y.Device).WithMany(y => y.Contract_Device_Relations).HasForeignKey(y => y.DeviceId).OnDelete(DeleteBehavior.Restrict);
+            mb.Entity<ContractDevice>().HasOne(x => x.Contract).WithMany(x => x.Contract_Device_Relations).HasForeignKey(x => x.ContractId).OnDelete(DeleteBehavior.Restrict);
 
             //Connection between InstallationStatus and Device
             mb.Entity<Device>(entity =>
@@ -64,8 +64,10 @@ namespace Models
             };
             Device n1 = new Device() { Id = 1, Name = "Device Test1", Price=50, State="Available"};
             Device n2 = new Device() { Id = 2, Name = "Device Test2", Price = 100, State = "Rented"};
+            History h1 = new History() { Id=1, Executor=1, Date= new DateTime(2022, 12, 31, 23, 59, 59) , Type="Create"};
             mb.Entity<Contract>().HasData(c1, c2);
             mb.Entity<Device>().HasData(n1, n2);
+            mb.Entity<History>().HasData(h1);
             
         }
     }

@@ -14,23 +14,23 @@ namespace Models
         {
             this.db = _db;
         }
-        public IList<Contract_Device> GetAll()
+        public IList<ContractDevice> GetAll()
         {
             return db.Contract_Device_Relations.ToArray();
         }
-        public Contract_Device Get(int id)
+        public ContractDevice Get(int id)
         {
             return db.Contract_Device_Relations.FirstOrDefault(t => t.Id == id);
         }
 
 
-        public void Post(Contract_Device obj)
+        public void Post(ContractDevice obj)
         {
             db.Contract_Device_Relations.Add(obj);
             db.SaveChanges();
         }
 
-        public void Put(Contract_Device obj)
+        public void Put(ContractDevice obj)
         {
             var old = Get(obj.Id);
             old.ContractId = obj.ContractId;

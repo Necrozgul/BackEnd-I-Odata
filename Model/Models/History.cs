@@ -14,10 +14,8 @@ namespace Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [MaxLength(20)]
-        [Required]
         public string Type { get; set; }
-        public DateTime Timing { get; set; }
-        public string Executor { get; set; }
+        public DateTime Date { get; set; }
+        public int Executor { get; set; }
     }
 }
