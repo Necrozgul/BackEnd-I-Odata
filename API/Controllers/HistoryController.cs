@@ -27,7 +27,7 @@ namespace API.Controllers
         }
 
 
-        public IActionResult Post([FromBody] History dev)
+        public IActionResult Post(History dev)
         {
             try
             {

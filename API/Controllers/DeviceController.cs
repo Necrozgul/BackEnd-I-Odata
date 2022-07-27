@@ -42,7 +42,7 @@ namespace API.Controllers
             
         }
 
-        public IActionResult Put([FromODataUri] Device dev)
+        public IActionResult Patch(Device dev)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace API.Controllers
             }
         }
 
-        public IActionResult Delete([FromODataUri] int key)
+        public IActionResult Delete(int key)
         {
             try
             {

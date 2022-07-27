@@ -28,13 +28,14 @@ namespace Model
         {
             db.Contracts.Add(obj);
             db.SaveChanges();
+
         }
 
         public void Put(Contract obj)
         {
             if (obj != null)
             {
-                var old = Get(obj.Id);
+                var old = Get(obj.Id);               
                 old.Name = obj.Name;
                 old.Startdate = obj.Startdate;
                 old.Enddate = obj.Enddate;

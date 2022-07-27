@@ -29,33 +29,18 @@ namespace API.Controllers
 
         public IActionResult Post(Contract dev)
         {
-            try
-            {
-                context.Post(dev);
-                return Ok("Siker");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            
+            context.Post(dev);
+            return Ok("Siker");
+
         }
 
-        public IActionResult Put([FromODataBody] Contract dev)
+        public IActionResult Patch(Contract dev)
         {
-            try
-            {
-                context.Put(dev);
-                return Ok("Siker");
-            }
-            catch (Exception ex)
-            {
-
-                return Ok(ex.Message);
-            }
+            context.Put(dev);
+            return Ok("Siker");
         }
         //Delete Method
-        public IActionResult Delete( int key)
+        public IActionResult Delete(int key)
         {
             try
             {

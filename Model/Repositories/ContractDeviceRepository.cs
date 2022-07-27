@@ -33,9 +33,17 @@ namespace Models
         public void Put(ContractDevice obj)
         {
             var old = Get(obj.Id);
-            old.ContractId = obj.ContractId;
-            old.DeviceId = obj.DeviceId;
+            if (obj.ContractId >-1)
+            {
+                old.ContractId = obj.ContractId;
+            }
+            if (obj.DeviceId > -1)
+            {
+                old.DeviceId = obj.DeviceId;
+            }
             db.SaveChanges();
+
+
         }
 
         public void Delete(int id)
