@@ -16,12 +16,12 @@ namespace Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //[NotMapped]
-        //[JsonIgnore]
+        [NotMapped]
+        [JsonIgnore]
         public virtual Contract Contract { get; set; }
         public int ContractId { get; set; }
-        //[NotMapped]
-        //[JsonIgnore]
+        [NotMapped]
+        [JsonIgnore]
         public virtual Device Device { get; set; }
         public int DeviceId { get; set; }
     }

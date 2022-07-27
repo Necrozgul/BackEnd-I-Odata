@@ -31,6 +31,7 @@ namespace Models
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+
             //Connection between Device and Contracts with a connection table
             mb.Entity<ContractDevice>().HasKey(pt => new { pt.DeviceId, pt.ContractId });
             mb.Entity<ContractDevice>().HasOne(y => y.Device).WithMany(y => y.Contract_Device_Relations).HasForeignKey(y => y.DeviceId).OnDelete(DeleteBehavior.Restrict);
