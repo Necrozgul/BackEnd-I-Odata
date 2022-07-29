@@ -21,15 +21,16 @@ namespace API.Controllers
             context = repo;
         }
 
-        [EnableQuery]
+        [EnableQuery()]
+        [HttpGet]
         public IList<Device> Get()
         {
             var d = context.GetAll();
             ;
             return d;
         }
-
-        public IActionResult Post([FromODataBody] Device device)
+        [HttpPost]
+        public IActionResult Post(Device device)
         {
             try
             {
@@ -42,7 +43,7 @@ namespace API.Controllers
             }
             
         }
-
+        [HttpPatch]
         public IActionResult Patch([FromODataUri] int key, Delta<Device> device)
         {
             ;
@@ -57,7 +58,7 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        [HttpDelete]
         public IActionResult Delete([FromODataUri] int key)
         {
             try
