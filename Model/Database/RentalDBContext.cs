@@ -38,6 +38,7 @@ namespace Models
             mb.Entity<ContractDevice>().HasOne(x => x.Contract).WithMany(x => x.Contract_Device_Relations).HasForeignKey(x => x.ContractId).OnDelete(DeleteBehavior.Cascade);
 
 
+
             Contract c1 = new Contract() { 
                 Id=1, Name="Contract1", 
                 Startdate=DateTime.Now, 

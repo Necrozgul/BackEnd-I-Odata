@@ -1,4 +1,6 @@
-﻿using Models;
+﻿using Microsoft.AspNetCore.OData.Deltas;
+using Microsoft.EntityFrameworkCore;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,14 +32,18 @@ namespace Model
             db.SaveChanges();
         }
 
-        public void Put(Device obj)
+        public void Put(int key,Device obj)
         {
-            var old = Get(obj.Id);
-            old.Price = obj.Price;
-            old.State = obj.State;
-            old.Name = obj.Name;
-            old.Date = obj.Date;
-            db.SaveChanges();
+            if (key == obj.Id)
+            {
+                db.Entry(obj).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Device not found");
+            }
+            
         }
 
         public void Delete(int id)

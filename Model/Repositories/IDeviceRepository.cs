@@ -9,6 +9,6 @@ namespace Model
         Device Get(int id);
         IList<Device> GetAll();
         void Post(Device obj);
-        void Put(Device obj);
+        void Put(int key,Device obj);
     }
 }

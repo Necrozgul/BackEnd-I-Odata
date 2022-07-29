@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Deltas;
 using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
@@ -43,11 +44,11 @@ namespace API.Controllers
             
         }
 
-        public IActionResult Patch(Device dev)
+        public IActionResult Put([FromODataUri] int key, Device device)
         {
             try
             {
-                context.Put(dev);
+                context.Put(key,device);
                 return Ok("Siker");
             }
             catch (Exception ex)
@@ -70,20 +71,5 @@ namespace API.Controllers
                 return Ok(ex.Message);
             }
         }
-        /*
-        public IActionResult Delete(Device dev)
-        {
-            try
-            {
-                context.Delete(dev.Id);
-                return Ok("Siker");
-            }
-            catch (Exception ex)
-            {
-
-                return Ok(ex.Message);
-            }
-        }
-        */
     }
 }
