@@ -19,10 +19,6 @@ namespace Models
 
         public DateTime Date { get; set; }
 
-        public string InstallationStatus { get; set; }
-
         public virtual IList<ContractDevice> Contract_Device_Relations { get; set; }
-
-        public virtual InstallationStatus Status { get; set; }
     }
 }

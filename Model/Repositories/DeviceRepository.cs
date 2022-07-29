@@ -37,7 +37,6 @@ namespace Model
             old.State = obj.State;
             old.Name = obj.Name;
             old.Date = obj.Date;
-            old.InstallationStatus = obj.InstallationStatus;
             db.SaveChanges();
         }
 

@@ -57,7 +57,7 @@ namespace API.Controllers
             }
         }
 
-        public IActionResult Delete(int key)
+        public IActionResult Delete([FromODataUri] int key)
         {
             try
             {
@@ -70,5 +70,20 @@ namespace API.Controllers
                 return Ok(ex.Message);
             }
         }
+        /*
+        public IActionResult Delete(Device dev)
+        {
+            try
+            {
+                context.Delete(dev.Id);
+                return Ok("Siker");
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(ex.Message);
+            }
+        }
+        */
     }
 }

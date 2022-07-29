@@ -34,16 +34,9 @@ namespace Models
 
             //Connection between Device and Contracts with a connection table
             mb.Entity<ContractDevice>().HasKey(pt => new { pt.DeviceId, pt.ContractId });
-            mb.Entity<ContractDevice>().HasOne(y => y.Device).WithMany(y => y.Contract_Device_Relations).HasForeignKey(y => y.DeviceId).OnDelete(DeleteBehavior.Restrict);
-            mb.Entity<ContractDevice>().HasOne(x => x.Contract).WithMany(x => x.Contract_Device_Relations).HasForeignKey(x => x.ContractId).OnDelete(DeleteBehavior.Restrict);
+            mb.Entity<ContractDevice>().HasOne(y => y.Device).WithMany(y => y.Contract_Device_Relations).HasForeignKey(y => y.DeviceId).OnDelete(DeleteBehavior.Cascade);//Restrict volt
+            mb.Entity<ContractDevice>().HasOne(x => x.Contract).WithMany(x => x.Contract_Device_Relations).HasForeignKey(x => x.ContractId).OnDelete(DeleteBehavior.Cascade);
 
-            //Connection between InstallationStatus and Device
-            mb.Entity<Device>(entity =>
-            {
-                entity.HasOne(dev => dev.Status)
-                    .WithMany(x => x.Devices)
-                    .OnDelete(DeleteBehavior.Restrict);
-            });
 
             Contract c1 = new Contract() { 
                 Id=1, Name="Contract1", 
