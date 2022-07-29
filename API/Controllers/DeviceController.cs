@@ -44,11 +44,11 @@ namespace API.Controllers
             
         }
 
-        public IActionResult Put([FromODataUri] int key, Device device)
+        public IActionResult Patch([FromODataUri] int key, Delta<Device> device)
         {
             try
             {
-                context.Put(key,device);
+                context.Patch(key,device);
                 return Ok("Siker");
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Microsoft.AspNetCore.OData.Deltas;
+using Models;
 using System.Collections.Generic;
 
 namespace Models
@@ -10,5 +11,7 @@ namespace Models
         IList<ContractDevice> GetAll();
         void Post(ContractDevice obj);
         void Put(ContractDevice obj);
+
+        
     }
 }

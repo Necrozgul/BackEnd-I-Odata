@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Microsoft.AspNetCore.OData.Deltas;
+using Models;
 using System.Collections.Generic;
 
 namespace Model
@@ -10,5 +11,7 @@ namespace Model
         IList<Contract> GetAll();
         void Post(Contract obj);
         void Put(Contract obj);
+
+        void Patch(int key, Delta<Contract> obj);
     }
 }

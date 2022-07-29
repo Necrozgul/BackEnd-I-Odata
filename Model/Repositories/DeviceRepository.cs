@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.ModelBinding;
 
 namespace Model
 {
@@ -32,18 +33,24 @@ namespace Model
             db.SaveChanges();
         }
 
-        public void Put(int key,Device obj)
+        public void Put(int key, Device obj)
         {
-            if (key == obj.Id)
+            var entity = db.Devices.Find(key);
+            if (entity == null)
             {
-                db.Entry(obj).State = EntityState.Modified;
-                db.SaveChanges();
+                throw new Exception("Not found");
             }
-            else
+            db.SaveChangesAsync();
+        }
+        public void Patch(int key,Delta<Device> obj)
+        {
+            var entity = db.Devices.Find(key);
+            if (entity == null)
             {
-                throw new Exception("Device not found");
+                throw new Exception("Not found");
             }
-            
+            obj.Patch(entity);
+            db.SaveChangesAsync();
         }
 
         public void Delete(int id)

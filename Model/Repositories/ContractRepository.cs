@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Microsoft.AspNetCore.OData.Deltas;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,17 @@ namespace Model
                 throw new Exception("[Error] : You didnt gave the contract so cant edit");
             }
             
+        }
+
+        public void Patch(int key, Delta<Contract> obj)
+        {
+            var entity = db.Contracts.Find(key);
+            if (entity == null)
+            {
+                throw new Exception("Not found");
+            }
+            obj.Patch(entity);
+            db.SaveChangesAsync();
         }
 
         public void Delete(int id)

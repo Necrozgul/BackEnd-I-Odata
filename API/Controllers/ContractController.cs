@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Deltas;
 using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
@@ -34,9 +35,9 @@ namespace API.Controllers
 
         }
 
-        public IActionResult Patch(Contract dev)
+        public IActionResult Patch([FromODataUri] int key, Delta<Contract> contract)
         {
-            context.Put(dev);
+            context.Patch(key,contract);
             return Ok("Siker");
         }
         //Delete Method
