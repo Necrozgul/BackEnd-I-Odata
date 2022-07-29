@@ -10,7 +10,7 @@ namespace Model
         Contract Get(int id);
         IList<Contract> GetAll();
         void Post(Contract obj);
-        void Put(Contract obj);
+        void Put(int key, Contract obj);
 
         void Patch(int key, Delta<Contract> obj);
     }

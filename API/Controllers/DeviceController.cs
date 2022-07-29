@@ -29,12 +29,11 @@ namespace API.Controllers
             return d;
         }
 
-
-        public IActionResult Post(Device dev)
+        public IActionResult Post([FromODataBody] Device device)
         {
             try
             {
-                context.Post(dev);
+                context.Post(device);
                 return Ok("Siker");
             }
             catch (Exception ex)
@@ -46,6 +45,7 @@ namespace API.Controllers
 
         public IActionResult Patch([FromODataUri] int key, Delta<Device> device)
         {
+            ;
             try
             {
                 context.Patch(key,device);
@@ -54,7 +54,7 @@ namespace API.Controllers
             catch (Exception ex)
             {
 
-                return Ok(ex.Message);
+                return BadRequest(ex.Message);
             }
         }
 

@@ -20,6 +20,7 @@ namespace API.Controllers
             _logger = logger;
             context = repo;
         }
+
         [EnableQuery]
         public IList<Contract> Get()
         {
@@ -28,17 +29,34 @@ namespace API.Controllers
             return d;
         }
 
-        public IActionResult Post(Contract dev)
+        public IActionResult Post(Contract cont)
         {
-            context.Post(dev);
-            return Ok("Siker");
+            try
+            {
+                context.Post(cont);
+                return Ok("Siker");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
 
         public IActionResult Patch([FromODataUri] int key, Delta<Contract> contract)
         {
-            context.Patch(key,contract);
-            return Ok("Siker");
+            ;
+            try
+            {
+                context.Patch(key, contract);
+                return Ok("Siker");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+            
         }
         //Delete Method
         public IActionResult Delete(int key)

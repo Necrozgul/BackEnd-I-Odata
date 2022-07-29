@@ -50,7 +50,7 @@ namespace Model
                 throw new Exception("Not found");
             }
             obj.Patch(entity);
-            db.SaveChangesAsync();
+            db.SaveChanges();
         }
 
         public void Delete(int id)

@@ -24,33 +24,21 @@ namespace Model
             return db.Contracts.FirstOrDefault(t => t.Id == id);
         }
 
-
         public void Post(Contract obj)
         {
             db.Contracts.Add(obj);
             db.SaveChanges();
-
         }
-
-        public void Put(Contract obj)
+        public void Put(int key, Contract obj)
         {
-            if (obj != null)
+            var entity = db.Contracts.Find(key);
+            if (entity == null)
             {
-                var old = Get(obj.Id);               
-                old.Name = obj.Name;
-                old.Startdate = obj.Startdate;
-                old.Enddate = obj.Enddate;
-                old.Email = obj.Email;
-                old.Phone = obj.Phone;
-                old.Address = obj.Address;
-                db.SaveChanges();
+                throw new Exception("Not found");
             }
-            else
-            {
-                throw new Exception("[Error] : You didnt gave the contract so cant edit");
-            }
-            
+            db.SaveChangesAsync();
         }
+
 
         public void Patch(int key, Delta<Contract> obj)
         {
@@ -60,7 +48,7 @@ namespace Model
                 throw new Exception("Not found");
             }
             obj.Patch(entity);
-            db.SaveChangesAsync();
+            db.SaveChanges();
         }
 
         public void Delete(int id)
