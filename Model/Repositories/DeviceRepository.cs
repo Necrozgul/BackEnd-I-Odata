@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 using System.Web.Http.ModelBinding;
 
 namespace Model
@@ -25,7 +26,6 @@ namespace Model
         {
             return db.Devices.FirstOrDefault(t => t.Id == id);
         }
-
 
         public void Post(Device obj)
         {

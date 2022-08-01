@@ -30,8 +30,9 @@ namespace API.Controllers
             return d;
         }
         [HttpPost]
-        public IActionResult Post(Device device)
+        public IActionResult Post([FromBody] Device device)
         {
+            ;
             try
             {
                 context.Post(device);
